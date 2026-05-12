@@ -10,7 +10,7 @@ RAG = Retrieval-Augmented Generation (检索增强生成)
 ### process
 1、文档 → 嵌入模型 → 文档向量<br>
 2、用户问题 → 嵌入模型 → 问题向量<br>
-3、**余弦相似度算法** → 找出最像的文档<br>
+3、**余弦相似度算法**(./code/cosine_similarity.py) → 找出最像的文档<br>
 4、丢给大模型回答
 
 
