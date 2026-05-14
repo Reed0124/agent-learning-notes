@@ -1,8 +1,10 @@
 """
 name: StrOutputParser()
 function: 将AIMessage对象（model invoke后的结果）拆解为简单字符串
+Args: AIMessage
+Returns: str
 """
-from http.client import responses
+
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_deepseek import ChatDeepSeek
