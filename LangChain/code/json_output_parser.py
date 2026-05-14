@@ -1,5 +1,5 @@
 """
-name: JsonOutputParser
+name: JsonOutputParser()
 function: 第一个提示词交给大模型处理后，将结果传入第二个提示词模版，因为模版的入参是dict格式的，需要JsonOutputParser处理，
     将AIMessage对象解析成JSON格式
 Args: AIMessage(content必须为JSON格式)
