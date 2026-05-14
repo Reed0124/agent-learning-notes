@@ -15,7 +15,7 @@ history_data = [
 
 llm = ChatDeepSeek(model="deepseek-v4-flash")
 
-chain = chat_prompt_template | llm
+chain = chat_prompt_template | llm   # RunnableSequence对象
 print(chain.invoke({"history": history_data}).content)
 
 for chunk in chain.stream({"history": history_data}):
