@@ -1,3 +1,7 @@
+"""
+学习根据向量库检索结果，插入提示词模版，交给大模型处理
+"""
+
 from langchain_deepseek import ChatDeepSeek
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_community.embeddings import DashScopeEmbeddings
