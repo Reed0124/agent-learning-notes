@@ -68,8 +68,7 @@ class KnowledgeBaseService(object):
         md5_hex = get_string_md5(data)
 
         if check_md5(md5_hex):
-            print("已存在于向量库")
-            return
+            return "已存在于向量库"
 
         if len(data) > config.chunk_size:
             knowledge_chunks: list[str] = self.spliter.split_text(data)
