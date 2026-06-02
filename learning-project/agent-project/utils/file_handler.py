@@ -35,7 +35,7 @@ def get_file_md5_hex(file_path: str):
 
 def listdir_with_allowed_type(path: str, allowed_types: tuple[str]):
     """
-    返回文件夹内的文件列表
+    返回data资源文件夹中 符合格式的 文件路径list
     :return:
     """
     files = []
