@@ -1,3 +1,14 @@
-.idea/
+# Python 虚拟环境
+.venv/
+venv/
 __pycache__/
-learning-project/agent-project/logs/
+*.py[cod]
+*.so
+
+# 编辑器、系统文件
+.idea/
+.vscode/
+.DS_Store
+
+# 配置文件
+.env
