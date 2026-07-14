@@ -1,11 +1,22 @@
 """
-01 模型初始化的方法
+01 模型的初始化以及调用
+
+模型的调用方法
+1、invoke(): 阻塞式，一次性返回完整的结果
+2、stream(): 阻塞式，流式输出，实时返回每个token
+3、batch(): 阻塞式，批量处理多个输入
+以及它们的异步版本
+4、ainvoke()
+5、astream()
+6、abatch()
+
 """
 
 # 调用Deepseek的模型
 import os
 
 from langchain.chat_models import init_chat_model
+from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_deepseek import ChatDeepSeek
 
 # 读取配置文件中的.env文件 (后续初始化模型的时候可以不加api和url参数，自动检测)
@@ -30,5 +41,39 @@ model = init_chat_model(
     temperature=0.7, # 模型温度，范围0-1，默认0.7
 )
 
-response = model.invoke("巴威台风对苏州的影响如何")
-print(response)
+# 调用模型
+# 1、入参字符串
+response1 = model.invoke("巴威台风对苏州的影响如何")
+
+# 2、字典列表 (多轮对话场景)
+messages = [
+    {"role": "system", "content": "你是一个话少的助手"},
+    {"role": "user", "content": "巴威台风对苏州的影响如何"},
+    # {"role": "assistant", "content": "好的，正在查找"}
+]
+response2 = model.invoke(messages)
+
+# 3、消息对象列表
+message_list = [
+    SystemMessage(content="你是一个话少的助手"),
+    HumanMessage(content="巴威台风对苏州的影响如何"),
+    # AIMessage(content="好的，正在查找")
+]
+response3 = model.invoke(message_list)
+
+# invoke的返回值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
