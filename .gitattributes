@@ -1,6 +1,5 @@
 # ipynb 禁止自动转换换行
 *.ipynb -text
-*.ipynb binary
 
 # python 文件正常处理
 *.py text eol=lf
