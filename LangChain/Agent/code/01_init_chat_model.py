@@ -60,7 +60,8 @@ message_list = [
     # AIMessage(content="好的，正在查找")
 ]
 response3 = model.invoke(message_list)
-
+print(response3.content)
+print(response3.content_blocks)
 # invoke的返回值
 
 
