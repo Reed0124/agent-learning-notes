@@ -5,6 +5,8 @@ from langchain_core.tools import tool
 from langchain_deepseek import ChatDeepSeek
 from langgraph.runtime import Runtime
 
+from rich import print as rprint
+
 
 @tool(description="查询天气,传入城市名称字符串")
 def get_weather(city: str) -> str:
@@ -61,4 +63,4 @@ response = agent.invoke(
     }
 )
 
-print("*************\n", response)
+rprint(response)
