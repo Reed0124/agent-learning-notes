@@ -1,6 +1,7 @@
 from langchain.agents import AgentState, create_agent
 from langchain.agents.middleware import before_agent, after_agent, before_model, after_model, wrap_model_call, \
     wrap_tool_call
+from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
 from langchain_deepseek import ChatDeepSeek
 from langgraph.runtime import Runtime
@@ -49,7 +50,7 @@ def monitor_tool(request, handler):
     return handler(request)
 
 agent = create_agent(
-    model=ChatDeepSeek(model="deepseek-chat"),
+    model=init_chat_model(model="deepseek-v4-flash"),
     tools=[get_weather],
     middleware=[log_before_agent, log_after_agent, log_before_model, log_after_model, model_call_hook, monitor_tool],
     system_prompt="你是一个话少的助手"
