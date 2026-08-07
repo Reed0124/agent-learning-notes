@@ -29,14 +29,13 @@ DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL")
 
 model = ChatDeepSeek(
     model="deepseek-v4-flash",
-    # api_key=DEEPSEEK_API_KEY,
-    # api_base=DEEPSEEK_BASE_URL,
     extra_body={
         # "thinking": {"type": "disabled"},
-        "enable_search": True
-
+        # "enable_search": True
+        # "tools": [
+        #     {type: "web_search"}
+        # ]
     }
-
 )
 
 # model = init_chat_model(
@@ -62,7 +61,12 @@ messages = [
     {"role": "user", "content": "2026年有两位华人获得了菲尔兹奖是谁"},
     # {"role": "assistant", "content": "好的，正在查找"}
 ]
-response2 = model.invoke(messages)
+response2 = model.invoke(
+    messages,
+    model_kwargs={
+        "tools": [{"type": "web_search"}]  # 注意这里不是 extra_body
+    }
+)
 rprint(response2)
 
 # 3、消息对象列表
