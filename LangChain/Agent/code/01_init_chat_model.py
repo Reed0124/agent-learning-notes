@@ -30,7 +30,7 @@ DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL")
 model = ChatDeepSeek(
     model="deepseek-v4-flash",
     extra_body={
-        # "thinking": {"type": "disabled"},
+        "thinking": {"type": "disabled"},
         # "enable_search": True
         # "tools": [
         #     {type: "web_search"}
@@ -62,10 +62,7 @@ messages = [
     # {"role": "assistant", "content": "好的，正在查找"}
 ]
 response2 = model.invoke(
-    messages,
-    model_kwargs={
-        "tools": [{"type": "web_search"}]  # 注意这里不是 extra_body
-    }
+    messages
 )
 rprint(response2)
 
