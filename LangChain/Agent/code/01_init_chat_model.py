@@ -27,14 +27,29 @@ load_dotenv(override=True)
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL")
 
-model = ChatDeepSeek(
+# model = ChatDeepSeek(
+#     model="deepseek-v4-flash",
+#     extra_body={
+#         "thinking": {"type": "disabled"},
+#         # "enable_search": True
+#         # "tools": [
+#         #     {type: "web_search"}
+#         # ]
+#     },
+#     model_kwargs={
+#         "tools": [{"type": "web_search"}],
+#     }
+# )
+
+from langchain_openai import ChatOpenAI
+
+model = ChatOpenAI(
     model="deepseek-v4-flash",
-    extra_body={
-        "thinking": {"type": "disabled"},
-        # "enable_search": True
-        # "tools": [
-        #     {type: "web_search"}
-        # ]
+    api_key=DEEPSEEK_API_KEY,
+    base_url="https://api.deepseek.com",
+    # 通过 model_kwargs 传递工具定义
+    model_kwargs={
+        "tools": [{"type": "web_search"}],
     }
 )
 
@@ -64,7 +79,7 @@ messages = [
 response2 = model.invoke(
     messages
 )
-rprint(response2)
+rprint(response2.content[-1]["text"])
 
 # 3、消息对象列表
 # message_list = [
